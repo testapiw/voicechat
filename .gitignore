@@ -1,0 +1,64 @@
+# Symfony cache and logs
+/var/
+/vendor/
+/node_modules/
+/public/bundles/
+/public/build/
+/build/
+
+# Symfony cache folders
+/var/cache/
+/var/log/
+/var/sessions/
+
+# Composer files
+/composer.lock
+
+# Environment files
+/.env.local
+/.env.local.php
+/.env.test.local
+/.env.test
+
+# Docker files
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# PhpStorm and other IDEs
+/.idea/
+/.vscode/
+/*.iml
+
+# Mac OS
+.DS_Store
+
+# PostgreSQL data (если используешь volume, обычно не нужен в репозитории)
+/pgdata/
+
+# Doctrine migration files (если хочешь игнорировать миграции, обычно НЕ надо)
+/migrations/
+
+# PHPUnit coverage reports
+/var/phpunit-*
+
+# Logs
+*.log
+
+# Symfony profiler
+/profiler/
+
+# Generated files
+/public/build/
+/public/bundles/
+
+# Node / Yarn / NPM
+/node_modules/
+/yarn-error.log
+
+# Others
+*.swp
+*~
+rd
+install
+symfony.lock
+install_docker.sh
