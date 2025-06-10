@@ -61,4 +61,7 @@ docker-compose.override.yaml
 rd
 install
 symfony.lock
+composer.lock
 install_docker.sh
+.env.dev
+.lock

@@ -35,7 +35,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: testapiw@gmail.com
       PGADMIN_DEFAULT_PASSWORD: admin123 
     ports:
-      - "8081:80"  # http://localhost:8081
+      - "8081:80"  # docker compose up -d pgadmin http://localhost:8081
     volumes:
       - pgadmin_data:/var/lib/pgadmin
     depends_on:
