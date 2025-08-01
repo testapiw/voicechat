@@ -1,0 +1,21 @@
+<profile name="internal">
+  <gateways/>
+  <domains>
+    <domain name="$${domain}" parse="true"/>
+  </domains>
+
+  <settings>
+    <param name="debug" value="0"/>
+    <param name="sip-port" value="5060"/>
+    <param name="dialplan" value="XML"/>
+    <param name="context" value="default"/>
+    <param name="rtp-ip" value="$${local_ip_v4}"/>
+    <param name="sip-ip" value="$${local_ip_v4}"/>
+    <param name="ext-rtp-ip" value="auto-nat"/>
+    <param name="ext-sip-ip" value="auto-nat"/>
+    <param name="domain" value="$${domain}"/>
+    <param name="inbound-codec-prefs" value="opus,PCMU,PCMA"/>
+    <param name="auth-calls" value="true"/>
+    <param name="force-register-domain" value="true"/>
+  </settings>
+</profile>

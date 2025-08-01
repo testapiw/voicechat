@@ -1,0 +1,21 @@
+<include>
+  <user id="1001">
+    <params>
+      <param name="password" value="4vu3gA9P7R"/>
+      <param name="vm-password" value="1001"/>
+    </params>
+    <variables>
+      <variable name="toll_allow" value="domestic,international,local"/>
+      <variable name="accountcode" value="1001"/>
+      <variable name="user_context" value="default"/>
+      <variable name="effective_caller_id_name" value="User 1001"/>
+      <variable name="effective_caller_id_number" value="1001"/>
+      <variable name="outbound_caller_id_name" value="FreeSWITCH"/>
+      <variable name="outbound_caller_id_number" value="0000000000"/>
+      <variable name="call_timeout" value="30"/>
+      <variable name="sip-force-contact" value="NDLB-connectile-dysfunction"/>
+      <variable name="directory-visible" value="true"/>
+      <variable name="directory-exten-visible" value="true"/>
+    </variables>
+  </user>
+</include>
