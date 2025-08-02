@@ -7,22 +7,19 @@ set -ex
 
 if [ "$1" = 'freeswitch' ]; then
 
-    echo "ENTRYPOINT ARGS: $@"
-    ls -la /etc/freeswitch
-    mkdir -p /etc/freeswitch
-
+    mkdir -p /etc/freeswitch /var/run/freeswitch /var/lib/freeswitch
+   
     # Копируем базовые конфиги из контейнера в /etc/freeswitch, если их там нет
-    if [ ! -f "/etc/freeswitch/freeswitch.xml" ]; then
-        cp -r /usr/local/freeswitch/conf/* /etc/freeswitch/
-    fi
+    #if [ ! -f "/etc/freeswitch/freeswitch.xml" ]; then
+    #    cp -r /usr/local/freeswitch/conf/* /etc/freeswitch/
+    #fi
 
     # Копируем поверх локальные (монтируемые) конфиги из /docker-conf, если есть
     if [ -d /docker-conf ]; then
-        cp -r /docker-conf/* /etc/freeswitch/
+        cp -r /docker-conf/* /usr/local/freeswitch/conf
     fi
 
     # Ensure runtime dirs exist
-    mkdir -p /var/run/freeswitch /var/lib/freeswitch
     chown -R freeswitch:freeswitch /etc/freeswitch /var/run/freeswitch /var/lib/freeswitch
 
    

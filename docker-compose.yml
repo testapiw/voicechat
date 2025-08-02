@@ -55,7 +55,7 @@ services:
    #  healthcheck:
    #        disable: true
     volumes:
-      - ./docker/freeswitch/conf:/docker-conf:ro
+      - ./docker/freeswitch/conf:/docker-conf
       - ./docker/freeswitch/log:/usr/local/freeswitch/log
     #cap_add:
     # - SYS_NICE
