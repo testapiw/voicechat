@@ -1,0 +1,10 @@
+<configuration name="pgsql.conf" description="PostgreSQL Configuration">
+  <settings>
+    <param name="hostname" value="db"/> <!-- имя контейнера PostgreSQL -->
+    <param name="port" value="5432"/>
+    <param name="database" value="symfony"/>
+    <param name="username" value="symfony"/>
+    <param name="password" value="secret"/>
+    <param name="pool-size" value="5"/>
+  </settings>
+</configuration>

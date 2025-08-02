@@ -7,9 +7,6 @@ services:
       - ./symfony:/var/www/symfony
     working_dir: /var/www/symfony
     command: php-fpm
-    depends_on:
-      - db
-      - freeswitch
     networks:
       - appnet
 
@@ -33,6 +30,8 @@ services:
       POSTGRES_PASSWORD: secret
     ports:
       - "5432:5432"
+    networks:
+      - appnet
 
   pgadmin:
     image: dpage/pgadmin4
@@ -40,28 +39,45 @@ services:
       PGADMIN_DEFAULT_EMAIL: testapiw@gmail.com
       PGADMIN_DEFAULT_PASSWORD: admin123 
     ports:
-      - "8081:80"  # docker compose up -d pgadmin http://localhost:8081
+      - "9081:80"  # docker compose up -d pgadmin http://localhost:9081
     volumes:
       - pgadmin_data:/var/lib/pgadmin
     depends_on:
       - db
+    networks:
+      - appnet
 
   # docker exec -it freeswitch fs_cli
   freeswitch:
     build:
       context: .
       dockerfile: docker/freeswitch/Dockerfile
+   #  healthcheck:
+   #        disable: true
     volumes:
-      - ./docker/freeswitch/conf:/usr/local/freeswitch/conf
+      - ./docker/freeswitch/conf:/docker-conf:ro
       - ./docker/freeswitch/log:/usr/local/freeswitch/log
+    #cap_add:
+    # - SYS_NICE
+    # - SYS_RESOURCE
     ports:
       - "5060:5060/udp"
       - "5060:5060/tcp"
-      - "5080:5080"
-      - "8021:8021"
+      - "5080:5080/udp"
+      - "5080:5080/tcp"
+      - "5061:5061/udp"
+      - "5061:5061/tcp"
+      - "5081:5081/udp"
+      - "5081:5081/tcp"
+      - "5066:5066/tcp"
+      - "7443:7443/tcp"
+      - "8081:8081/tcp"
+      - "8082:8082/tcp"
+      - "8021:8021/tcp"
+  #     - "64535-65535:64535-65535/udp"
+   #    - "16384-32768:16384-32768/udp"
     networks:
-      - appnet
-
+     - appnet
 
 volumes:
   pgadmin_data:

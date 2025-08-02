@@ -43,6 +43,7 @@ docker-compose.override.yaml
 
 # Logs
 *.log
+log/
 
 # Symfony profiler
 /profiler/

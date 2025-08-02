@@ -1,0 +1,5 @@
+<configuration name="post_load_modules.conf" description="Modules">
+  <modules>
+    <load module="mod_pgsql"/>
+  </modules>
+</configuration>
