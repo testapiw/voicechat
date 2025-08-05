@@ -12,6 +12,8 @@ use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
 /**
  * install:
  * composer require doctrine/doctrine-fixtures-bundle --dev
+ * 
+ * php bin/console doctrine:fixtures:load --group=UserFixtures
  */
 class UserFixtures extends Fixture implements FixtureGroupInterface
 {

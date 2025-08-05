@@ -2,13 +2,15 @@
 
 namespace App\Service;
 
+use App\Freeswitch\ESLconnection;
+
 class FreeswitchService
 {
-    private \ESLconnection $esl;
+    private ESLconnection $esl;
 
     public function __construct(string $host, int $port, string $password)
     {
-        $this->esl = new \ESLconnection($host, $port, $password);
+        $this->esl = new ESLconnection($host, $port, $password);
         if (!$this->esl->connected()) {
             throw new \RuntimeException('Failed to connect to FreeSWITCH');
         }

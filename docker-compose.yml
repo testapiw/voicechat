@@ -30,6 +30,8 @@ services:
       POSTGRES_PASSWORD: secret
     ports:
       - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     networks:
       - appnet
 
@@ -52,14 +54,9 @@ services:
     build:
       context: .
       dockerfile: docker/freeswitch/Dockerfile
-   #  healthcheck:
-   #        disable: true
     volumes:
       - ./docker/freeswitch/conf:/docker-conf
       - ./docker/freeswitch/log:/usr/local/freeswitch/log
-    #cap_add:
-    # - SYS_NICE
-    # - SYS_RESOURCE
     ports:
       - "5060:5060/udp"
       - "5060:5060/tcp"
@@ -81,6 +78,7 @@ services:
 
 volumes:
   pgadmin_data:
+  pgdata:
 
 networks:
   appnet:

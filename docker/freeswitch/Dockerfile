@@ -93,13 +93,18 @@ VOLUME ["/tmp"]
 # Limits Configuration
 COPY    ./docker/freeswitch/build/freeswitch.limits.conf /etc/security/limits.d/
 
+#ENV PATH="/usr/local/freeswitch/bin:${PATH}"
+RUN ln -s /usr/local/freeswitch/bin/fs_cli /usr/bin/fs_cli
+
 # Switch to freeswitch user
 #USER freeswitch
 
 # Healthcheck to make sure the service is running
-#SHELL       ["/bin/bash", "-c"]
-#HEALTHCHECK --interval=15s --timeout=5s \
-#    CMD  /usr/local/freeswitch/bin/fs_cli -x status | grep -q ^UP || exit 1
+SHELL       ["/bin/bash", "-c"]
+HEALTHCHECK --interval=15s --timeout=5s \
+    CMD  /usr/local/freeswitch/bin/fs_cli -x status | grep -q ^UP || exit 1
+
+
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["freeswitch"]
